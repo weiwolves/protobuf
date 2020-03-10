@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package dkfbasel.protobuf;
+package weiwolves.protobuf;
 
-option go_package = "github.com/dkfbasel/protobuf/types/nulldate";
+option go_package = "github.com/weiwolves/protobuf/types/nulldate";
 
 // NullDate ...
-message NullDate { 
+message NullDate {
 	string date = 1;
 
 	// is set to true if the date is null

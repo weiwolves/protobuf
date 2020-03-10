@@ -54,7 +54,7 @@ func (m *NullDate) GetIsNotNull() bool {
 }
 
 func init() {
-	proto.RegisterType((*NullDate)(nil), "dkfbasel.protobuf.NullDate")
+	proto.RegisterType((*NullDate)(nil), "weiwolves.protobuf.NullDate")
 }
 
 func init() { proto.RegisterFile("nulldate.proto", fileDescriptor0) }

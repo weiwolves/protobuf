@@ -2,18 +2,18 @@ syntax = "proto3";
 
 package startrek;
 
-import "dkfbasel/protobuf/timestamp.proto";
-import "dkfbasel/protobuf/nullstring.proto";
-import "dkfbasel/protobuf/nullint.proto";
+import "weiwolves/protobuf/timestamp.proto";
+import "weiwolves/protobuf/nullstring.proto";
+import "weiwolves/protobuf/nullint.proto";
 
 message StarfleetShip {
 
 	string name = 1; // comments on the same line will be stripped by the protoc grpc plugin
 
-	dkfbasel.protobuf.NullInt no_of_passengers = 2;
-	dkfbasel.protobuf.NullString mission_statement = 3;
+	weiwolves.protobuf.NullInt no_of_passengers = 2;
+	weiwolves.protobuf.NullString mission_statement = 3;
 
 	// use a different db column name for the departure time
 	// `db:"we_are_leaving_at"`
-	dkfbasel.protobuf.Timestamp departure_time = 4;
+	weiwolves.protobuf.Timestamp departure_time = 4;
 }

@@ -10,8 +10,8 @@ import (
 	"github.com/jmoiron/sqlx"
 	mappingFn "github.com/segmentio/go-snakecase"
 
-	startrek "github.com/dkfbasel/protobuf/example/domain"
-	"github.com/dkfbasel/protobuf/types/nullstring"
+	startrek "github.com/weiwolves/protobuf/example/domain"
+	"github.com/weiwolves/protobuf/types/nullstring"
 )
 
 func main() {

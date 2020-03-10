@@ -57,7 +57,7 @@ func (m *Timestamp) GetIsNotNull() bool {
 }
 
 func init() {
-	proto.RegisterType((*Timestamp)(nil), "dkfbasel.protobuf.Timestamp")
+	proto.RegisterType((*Timestamp)(nil), "weiwolves.protobuf.Timestamp")
 }
 
 func init() { proto.RegisterFile("timestamp.proto", fileDescriptor0) }

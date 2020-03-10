@@ -55,7 +55,7 @@ func (m *NullInt) GetIsNotNull() bool {
 }
 
 func init() {
-	proto.RegisterType((*NullInt)(nil), "dkfbasel.protobuf.NullInt")
+	proto.RegisterType((*NullInt)(nil), "weiwolves.protobuf.NullInt")
 }
 
 func init() { proto.RegisterFile("nullint.proto", fileDescriptor0) }

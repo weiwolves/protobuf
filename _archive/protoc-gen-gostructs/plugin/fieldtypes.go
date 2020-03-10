@@ -109,15 +109,15 @@ func adaptPackageName(pkgName string, name string) string {
 	name = strings.Replace(name, fmt.Sprintf(".%s", pkgName), "", -1)
 
 	// remove the trailing dot
-	// i.e. *.dkfbasel.types.Timestamp -> dkfbasel.types.Timestamp
+	// i.e. *.weiwolves.types.Timestamp -> weiwolves.types.Timestamp
 	name = strings.Replace(name, ".", "", 1)
 
 	// count the remaining number of points in the string
-	// i.e. dkfbasel.types.Timestamp
+	// i.e. weiwolves.types.Timestamp
 	pointCount := strings.Count(name, ".")
 
 	// replace all points except for the last with underscores
-	// i.e. dkfbasel.types.Timestamp -> dkfbasel_types.Timestamp
+	// i.e. weiwolves.types.Timestamp -> weiwolves_types.Timestamp
 	name = strings.Replace(name, ".", "_", pointCount-1)
 
 	return name

@@ -22,7 +22,7 @@ message StarfleetShip {
 
 	// use a different db column name for the departure time
 	// `db:"we_are_leaving_at"`
-	dkfbasel.protobuf.Timestamp departure_time = 4;
+	weiwolves.protobuf.Timestamp departure_time = 4;
 }
 
 // go struct definition
@@ -31,7 +31,7 @@ type StarfleetShip struct {
 
 	// use a different db column name for the departure time
 	// `db:"we_are_leaving_at"`
-	DepartureTime *dkfbasel_protobuf.Timestamp `protobuf:"bytes,4,opt,name=departure_time,json=departureTime" json:"departure_time,omitempty" db:"we_are_leaving_at"`
+	DepartureTime *weiwolves_protobuf.Timestamp `protobuf:"bytes,4,opt,name=departure_time,json=departureTime" json:"departure_time,omitempty" db:"we_are_leaving_at"`
 }
 ```
 

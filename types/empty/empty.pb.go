@@ -38,7 +38,7 @@ func (*Empty) ProtoMessage()               {}
 func (*Empty) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
 func init() {
-	proto.RegisterType((*Empty)(nil), "dkfbasel.protobuf.Empty")
+	proto.RegisterType((*Empty)(nil), "weiwolves.protobuf.Empty")
 }
 
 func init() { proto.RegisterFile("empty.proto", fileDescriptor0) }

@@ -15,9 +15,9 @@ package startrek
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import dkfbasel_protobuf "github.com/dkfbasel/protobuf/types/timestamp"
-import dkfbasel_protobuf1 "github.com/dkfbasel/protobuf/types/nullstring"
-import dkfbasel_protobuf2 "github.com/dkfbasel/protobuf/types/nullint"
+import weiwolves_protobuf "github.com/weiwolves/protobuf/types/timestamp"
+import weiwolves_protobuf1 "github.com/weiwolves/protobuf/types/nullstring"
+import weiwolves_protobuf2 "github.com/weiwolves/protobuf/types/nullint"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -32,11 +32,11 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type StarfleetShip struct {
 	Name             string                         `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	NoOfPassengers   *dkfbasel_protobuf2.NullInt    `protobuf:"bytes,2,opt,name=no_of_passengers,json=noOfPassengers" json:"no_of_passengers,omitempty"`
-	MissionStatement *dkfbasel_protobuf1.NullString `protobuf:"bytes,3,opt,name=mission_statement,json=missionStatement" json:"mission_statement,omitempty"`
+	NoOfPassengers   *weiwolves_protobuf2.NullInt    `protobuf:"bytes,2,opt,name=no_of_passengers,json=noOfPassengers" json:"no_of_passengers,omitempty"`
+	MissionStatement *weiwolves_protobuf1.NullString `protobuf:"bytes,3,opt,name=mission_statement,json=missionStatement" json:"mission_statement,omitempty"`
 	// use a different db column name for the departure time
 	// `db:"we_are_leaving_at"`
-	DepartureTime *dkfbasel_protobuf.Timestamp `protobuf:"bytes,4,opt,name=departure_time,json=departureTime" json:"departure_time,omitempty" db:"we_are_leaving_at"`
+	DepartureTime *weiwolves_protobuf.Timestamp `protobuf:"bytes,4,opt,name=departure_time,json=departureTime" json:"departure_time,omitempty" db:"we_are_leaving_at"`
 }
 
 func (m *StarfleetShip) Reset()                    { *m = StarfleetShip{} }
@@ -51,21 +51,21 @@ func (m *StarfleetShip) GetName() string {
 	return ""
 }
 
-func (m *StarfleetShip) GetNoOfPassengers() *dkfbasel_protobuf2.NullInt {
+func (m *StarfleetShip) GetNoOfPassengers() *weiwolves_protobuf2.NullInt {
 	if m != nil {
 		return m.NoOfPassengers
 	}
 	return nil
 }
 
-func (m *StarfleetShip) GetMissionStatement() *dkfbasel_protobuf1.NullString {
+func (m *StarfleetShip) GetMissionStatement() *weiwolves_protobuf1.NullString {
 	if m != nil {
 		return m.MissionStatement
 	}
 	return nil
 }
 
-func (m *StarfleetShip) GetDepartureTime() *dkfbasel_protobuf.Timestamp {
+func (m *StarfleetShip) GetDepartureTime() *weiwolves_protobuf.Timestamp {
 	if m != nil {
 		return m.DepartureTime
 	}

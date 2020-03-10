@@ -14,7 +14,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/dkfbasel/protobuf/protoc-gen-gostructs/plugin"
+	"github.com/weiwolves/protobuf/protoc-gen-gostructs/plugin"
 	"github.com/gogo/protobuf/proto"
 	"github.com/gogo/protobuf/protoc-gen-gogo/generator"
 )
@@ -53,7 +53,7 @@ func main() {
 	// use a custom plugin to generate the output
 	gen.GeneratePlugin(plugin.New())
 
-	regxImport, err := regexp.Compile(`import (.*) "github.com\/dkfbasel\/protobuf\/types\/(.*)"`)
+	regxImport, err := regexp.Compile(`import (.*) "github.com\/weiwolves\/protobuf\/types\/(.*)"`)
 	if err != nil {
 		log.Fatalln("could not compile regular expression")
 	}
@@ -80,7 +80,7 @@ func main() {
 		newContent = strings.Replace(newContent, "var _ = math.Inf\n", "", -1)
 
 		// fix imports for our types
-		// note: this will only work very specifically for the dkfbasel protobuf package
+		// note: this will only work very specifically for the weiwolves protobuf package
 
 		// get all package names for our types
 		dkfPackages := regxImport.FindAllStringSubmatch(newContent, -1)
@@ -88,14 +88,14 @@ func main() {
 		for _, importMatch := range dkfPackages {
 
 			// match the type of the package case insensitive
-			typeMatch := regexp.MustCompile(fmt.Sprintf(`(?i)dkfbasel_protobuf\.%s`, importMatch[2]))
+			typeMatch := regexp.MustCompile(fmt.Sprintf(`(?i)weiwolves_protobuf\.%s`, importMatch[2]))
 
-			// i.e. find dkfbasel_protobuf.Timestamp
+			// i.e. find weiwolves_protobuf.Timestamp
 			replaceMatch := typeMatch.FindString(newContent)
 
 			// replace the package
-			// i.e. dkfbasel_protobuf.Timestamp -> dkfbasel_protobuf1.Timestamp
-			replaceWith := strings.Replace(replaceMatch, "dkfbasel_protobuf", importMatch[1], -1)
+			// i.e. weiwolves_protobuf.Timestamp -> weiwolves_protobuf1.Timestamp
+			replaceWith := strings.Replace(replaceMatch, "weiwolves_protobuf", importMatch[1], -1)
 
 			// replache all occurances in the content
 			newContent = strings.Replace(newContent, replaceMatch, replaceWith, -1)

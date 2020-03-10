@@ -5,5 +5,5 @@ protoc \
   --proto_path=.. \
   empty.proto
 
-mv ./github.com/dkfbasel/protobuf/types/empty/* .
+mv ./github.com/weiwolves/protobuf/types/empty/* .
 rm -rf ./github.com
