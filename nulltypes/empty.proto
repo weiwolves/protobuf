@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package empty;
+package nulltypes;
 
 option go_package = "github.com/weiwolves/protobuf/nulltypes/empty;empty";
 
