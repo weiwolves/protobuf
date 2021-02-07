@@ -17,6 +17,7 @@ func (ts *Timestamp) SetLayout(l string) {
 	layout = l
 }
 
+// Now get time.Time.Now()
 func Now(v *time.Time) time.Time {
 	if v == nil {
 		return time.Now()

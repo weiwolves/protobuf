@@ -1,21 +1,10 @@
 #!/bin/sh
 
-cd empty
-./build.sh
-cd -
+protoc \
+  --go_out=. \
+  --proto_path=. \
+  *.proto
 
-cd nulldate
-./build.sh
-cd -
 
-cd nullint
-./build.sh
-cd -
-
-cd nullstring
-./build.sh
-cd -
-
-cd timestamp
-./build.sh
-cd -
+cp -rf ./github.com/weiwolves/protobuf/nulltypes/* ./
+rm -rf ./github.com

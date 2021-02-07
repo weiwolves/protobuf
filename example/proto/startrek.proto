@@ -2,18 +2,18 @@ syntax = "proto3";
 
 package startrek;
 
-import "nulltypes/timestamp/timestamp.proto";
-import "nulltypes/nullstring/nullstring.proto";
-import "nulltypes/nullint/nullint.proto";
+import "nulltypes/timestamp.proto";
+import "nulltypes/nullstring.proto";
+import "nulltypes/nullint.proto";
 
 message StarfleetShip {
 
 	string name = 1; // comments on the same line will be stripped by the protoc grpc plugin
 
-	nulltypes.nullint.NullInt no_of_passengers = 2;
-	nulltypes.nullstring.NullString mission_statement = 3;
+	nullint.NullInt no_of_passengers = 2;
+	nullstring.NullString mission_statement = 3;
 
 	// use a different db column name for the departure time
 	// `db:"we_are_leaving_at"`
-	nulltypes.timestamp.Timestamp departure_time = 4;
+	timestamp.Timestamp departure_time = 4;
 }
