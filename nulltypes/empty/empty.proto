@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package nulltypes.empty;
 
-option go_package = "github.com/weiwolves/protobuf/nulltypes/empty";
+option go_package = "github.com/weiwolves/protobuf/nulltypes/empty;empty";
 
 // Empty ...
 message Empty {}

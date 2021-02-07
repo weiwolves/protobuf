@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package nulltypes.nulldate;
 
-option go_package = "github.com/weiwolves/protobuf/nulltypes/nulldate";
+option go_package = "github.com/weiwolves/protobuf/nulltypes/nulldate;nulldate";
 
 // NullDate ...
 message NullDate {

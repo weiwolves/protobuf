@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package nulltypes.nullstring;
 
-option go_package = "github.com/weiwolves/protobuf/nulltypes/nullstring";
+option go_package = "github.com/weiwolves/protobuf/nulltypes/nullstring;nullstring";
 
 // NullString ...
 message NullString {

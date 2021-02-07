@@ -1,7 +1,7 @@
 #!/bin/sh
 
-protoc \
+protoc -I . -I $(go list -m -f "{{.Dir}}" github.com/srikrsna/protoc-gen-gotag) \
   --go_out=plugins=grpc:../domain \
   *.proto
 
-protoc-go-tags --dir=../domain
+# protoc-go-tags --dir=../domain
