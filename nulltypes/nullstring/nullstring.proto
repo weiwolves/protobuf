@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package nulltypes.nullstring;
+package nullstring;
 
 option go_package = "github.com/weiwolves/protobuf/nulltypes/nullstring";
 

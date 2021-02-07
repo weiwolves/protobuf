@@ -2,7 +2,7 @@
 
 protoc \
   --go_out=. \
-  --proto_path=.. \
+  --proto_path=. \
   timestamp.proto
 
 mv ./github.com/weiwolves/protobuf/nulltypes/timestamp/* .

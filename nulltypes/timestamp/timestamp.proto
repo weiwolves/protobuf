@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package nulltypes.timestamp;
+package timestamp;
 
 option go_package = "github.com/weiwolves/protobuf/nulltypes/timestamp";
 
