@@ -5,7 +5,7 @@ folder, in the same way like Google's protobuf well-known-types.
 
 ```console
 foo@bar:~$ mkdir /usr/local/include/weiwolves
-foo@bar:~$ ln -s $GOPATH/src/github.com/weiwolves/protobuf/types /usr/local/include/weiwolves/protobuf
+foo@bar:~$ ln -s $GOPATH/src/github.com/weiwolves/protobuf/nulltypes /usr/local/include/weiwolves/protobuf
 ```
 
 Now the protobuf types can be imported into your proto definition file.

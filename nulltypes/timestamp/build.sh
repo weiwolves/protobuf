@@ -5,5 +5,5 @@ protoc \
   --proto_path=.. \
   timestamp.proto
 
-mv ./github.com/weiwolves/protobuf/types/timestamp/* .
+mv ./github.com/weiwolves/protobuf/nulltypes/timestamp/* .
 rm -rf ./github.com

@@ -8,9 +8,26 @@ import (
 	"time"
 )
 
+var (
+	layout = "2006-01-02 15:04:05"
+)
+
+// SetLayout set timestamp parse layout format
+func (ts *Timestamp) SetLayout(l string) {
+	layout = l
+}
+
+func Now(v *time.Time) time.Time {
+	if v == nil {
+		return time.Now()
+	}
+	ts := Timestamp{}
+	ts.Set(*v)
+	return ts.Time()
+}
+
 // IsNull will return if the current timestamp is null
 func (ts *Timestamp) IsNull() bool {
-
 	if ts == nil {
 		return true
 	}
@@ -32,7 +49,7 @@ func (ts *Timestamp) Set(value time.Time) {
 		return
 	}
 
-	ts.Milliseconds = value.UnixNano() / 1000 / 1000
+	ts.Nanoseconds = value.UnixNano()
 	ts.IsNotNull = true
 }
 
@@ -43,7 +60,7 @@ func (ts *Timestamp) SetNull() {
 		return
 	}
 
-	ts.Milliseconds = 0
+	ts.Nanoseconds = 0
 	ts.IsNotNull = false
 }
 
@@ -54,7 +71,7 @@ func (ts *Timestamp) Time() time.Time {
 		return time.Time{}
 	}
 
-	return time.Unix(0, ts.Milliseconds*1000*1000)
+	return time.Unix(0, ts.Nanoseconds)
 }
 
 // Scan implements the Scanner interface of the database driver
@@ -69,12 +86,12 @@ func (ts *Timestamp) Scan(value interface{}) error {
 	dbTime, ok := value.(time.Time)
 
 	if ok {
-		ts.Milliseconds = dbTime.UnixNano() / 1000 / 1000
+		ts.Nanoseconds = dbTime.UnixNano()
 		ts.IsNotNull = true
 		return nil
 	}
 
-	ts.Milliseconds = 0
+	ts.Nanoseconds = 0
 	ts.IsNotNull = false
 	return nil
 }
@@ -86,7 +103,7 @@ func (ts Timestamp) Value() (driver.Value, error) {
 		return nil, nil
 	}
 
-	return time.Unix(0, ts.Milliseconds*1000*1000), nil
+	return time.Unix(0, ts.Nanoseconds), nil
 }
 
 // ImplementsGraphQLType is required by the graphql custom scalar interface
@@ -102,12 +119,12 @@ func (ts *Timestamp) UnmarshalGraphQL(input interface{}) error {
 
 	case Timestamp:
 		ts.IsNotNull = input.IsNotNull
-		ts.Milliseconds = input.Milliseconds
+		ts.Nanoseconds = input.Nanoseconds
 		return nil
 
 	case time.Time:
 		time := &Timestamp{}
-		time.Milliseconds = input.UnixNano() / 1000 / 1000
+		time.Nanoseconds = input.UnixNano()
 		time.IsNotNull = true
 		return nil
 

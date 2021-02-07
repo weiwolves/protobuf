@@ -11,7 +11,7 @@ import (
 	mappingFn "github.com/segmentio/go-snakecase"
 
 	startrek "github.com/weiwolves/protobuf/example/domain"
-	"github.com/weiwolves/protobuf/types/nullstring"
+	"github.com/weiwolves/protobuf/nulltypes/nullstring"
 )
 
 func main() {

@@ -3,7 +3,7 @@
 protoc \
   --go_out=. \
   --proto_path=.. \
-  nullstring.proto
+  empty.proto
 
-mv ./github.com/weiwolves/protobuf/types/nullstring/* .
+mv ./github.com/weiwolves/protobuf/nulltypes/empty/* .
 rm -rf ./github.com

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-package weiwolves.protobuf;
-
-option go_package = "github.com/weiwolves/protobuf/types/empty";
-
-// Empty ...
-message Empty {}

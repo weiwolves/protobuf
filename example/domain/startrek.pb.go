@@ -15,9 +15,9 @@ package startrek
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import weiwolves_protobuf "github.com/weiwolves/protobuf/types/timestamp"
-import weiwolves_protobuf1 "github.com/weiwolves/protobuf/types/nullstring"
-import weiwolves_protobuf2 "github.com/weiwolves/protobuf/types/nullint"
+import weiwolves_protobuf "github.com/weiwolves/protobuf/nulltypes/timestamp"
+import weiwolves_protobuf1 "github.com/weiwolves/protobuf/nulltypes/nullstring"
+import weiwolves_protobuf2 "github.com/weiwolves/protobuf/nulltypes/nullint"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -31,7 +31,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type StarfleetShip struct {
-	Name             string                         `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name             string                          `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	NoOfPassengers   *weiwolves_protobuf2.NullInt    `protobuf:"bytes,2,opt,name=no_of_passengers,json=noOfPassengers" json:"no_of_passengers,omitempty"`
 	MissionStatement *weiwolves_protobuf1.NullString `protobuf:"bytes,3,opt,name=mission_statement,json=missionStatement" json:"mission_statement,omitempty"`
 	// use a different db column name for the departure time

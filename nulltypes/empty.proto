@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package nulltypes;
+
+option go_package = "github.com/weiwolves/protobuf/nulltypes/empty";
+
+// Empty ...
+message Empty {}

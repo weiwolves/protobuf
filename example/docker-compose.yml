@@ -22,7 +22,7 @@ services:
     dns_search: .
     volumes:
       - .:/go/src/github.com/weiwolves/protobuf/example
-      - ../types:/go/src/github.com/weiwolves/protobuf/types
+      - ../types:/go/src/github.com/weiwolves/protobuf/nulltypes
     environment:
       - PROJECT=github.com/weiwolves/protobuf/example
       - CMD=build

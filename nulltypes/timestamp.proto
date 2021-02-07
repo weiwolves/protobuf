@@ -1,14 +1,15 @@
 syntax = "proto3";
 
-package weiwolves.protobuf;
+package nulltypes;
 
-option go_package = "github.com/weiwolves/protobuf/types/timestamp";
+option go_package = "github.com/weiwolves/protobuf/nulltypes/timestamp";
 
 // Timestamp ...
 message Timestamp {
 	// Represents seconds of UTC time since Unix epoch
 	// 1970-01-01T00:00:00Z
-	int64 milliseconds = 1;
+	// int64 milliseconds = 1;
+	int64 nanoseconds = 1;
 
 	// is set to true if the timestamp is null
 	bool is_not_null = 2;
