@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package nulldate;
+package nulltypes.nulldate;
 
 option go_package = "github.com/weiwolves/protobuf/nulltypes/nulldate";
 
