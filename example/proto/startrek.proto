@@ -10,10 +10,10 @@ message StarfleetShip {
 
 	string name = 1; // comments on the same line will be stripped by the protoc grpc plugin
 
-	nullint.NullInt no_of_passengers = 2;
-	nullstring.NullString mission_statement = 3;
+	nulltypes.NullInt no_of_passengers = 2;
+	nulltypes.NullString mission_statement = 3;
 
 	// use a different db column name for the departure time
 	// `db:"we_are_leaving_at"`
-	timestamp.Timestamp departure_time = 4;
+	nulltypes.Timestamp departure_time = 4;
 }

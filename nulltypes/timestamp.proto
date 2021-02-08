@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package nulltypes;
 
-option go_package = "github.com/weiwolves/protobuf/nulltypes/timestamp;timestamp";
+option go_package = "github.com/weiwolves/protobuf/nulltypes/timestamp";
 
 // Timestamp ...
 message Timestamp {
