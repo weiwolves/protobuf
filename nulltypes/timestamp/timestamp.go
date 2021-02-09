@@ -17,9 +17,9 @@ func (ts *Timestamp) SetLayout(l string) {
 	layout = l
 }
 
-func New(v time.Time) *Timestamp {
+func New(v *time.Time) *Timestamp {
 	ts := &Timestamp{}
-	ts.Set(v)
+	ts.Set(*v)
 	return ts
 }
 
