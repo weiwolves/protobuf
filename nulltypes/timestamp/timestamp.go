@@ -49,7 +49,8 @@ func (ts *Timestamp) Set(value time.Time) {
 		return
 	}
 
-	ts.Nanoseconds = value.UnixNano()
+	ts.Seconds = value.Unix()
+	ts.Nanos = value.UnixNano()
 	ts.IsNotNull = true
 }
 
@@ -59,7 +60,8 @@ func (ts *Timestamp) SetNull() {
 		return
 	}
 
-	ts.Nanoseconds = 0
+	ts.Seconds = 0
+	ts.Nanos = 0
 	ts.IsNotNull = false
 }
 
@@ -69,7 +71,7 @@ func (ts *Timestamp) Time() time.Time {
 		return time.Time{}
 	}
 
-	return time.Unix(0, ts.Nanoseconds)
+	return time.Unix(ts.Seconds, ts.Nanos)
 }
 
 // Scan implements the Scanner interface of the database driver
@@ -83,12 +85,14 @@ func (ts *Timestamp) Scan(value interface{}) error {
 	dbTime, ok := value.(time.Time)
 
 	if ok {
-		ts.Nanoseconds = dbTime.UnixNano()
+		ts.Seconds = dbTime.Unix()
+		ts.Nanos = dbTime.UnixNano()
 		ts.IsNotNull = true
 		return nil
 	}
 
-	ts.Nanoseconds = 0
+	ts.Seconds = 0
+	ts.Nanos = 0
 	ts.IsNotNull = false
 	return nil
 }
@@ -99,7 +103,7 @@ func (ts Timestamp) Value() (driver.Value, error) {
 		return nil, nil
 	}
 
-	return time.Unix(0, ts.Nanoseconds), nil
+	return time.Unix(ts.Seconds, ts.Nanos), nil
 }
 
 // ImplementsGraphQLType is required by the graphql custom scalar interface
@@ -115,12 +119,14 @@ func (ts *Timestamp) UnmarshalGraphQL(input interface{}) error {
 
 	case Timestamp:
 		ts.IsNotNull = input.IsNotNull
-		ts.Nanoseconds = input.Nanoseconds
+		ts.Seconds = input.Seconds
+		ts.Nanos = input.Nanos
 		return nil
 
 	case time.Time:
 		time := &Timestamp{}
-		time.Nanoseconds = input.UnixNano()
+		ts.Seconds = input.Unix()
+		time.Nanos = input.UnixNano()
 		time.IsNotNull = true
 		return nil
 
