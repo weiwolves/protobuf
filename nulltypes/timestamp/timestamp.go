@@ -19,7 +19,11 @@ func (ts *Timestamp) SetLayout(l string) {
 
 func New(v *time.Time) *Timestamp {
 	ts := &Timestamp{}
-	ts.Set(*v)
+	if v == nil {
+		ts.Set(time.Now())
+	} else {
+		ts.Set(*v)
+	}
 	return ts
 }
 
