@@ -156,6 +156,17 @@ func (ts *Timestamp) UnmarshalGraphQL(input interface{}) error {
 	}
 }
 
+// Marshal will return the content as json value, this is also called
+// by graphql to generate the response
+func (ts Timestamp) Marshal() ([]byte, error) {
+	return ts.MarshalJSON()
+}
+
+// Unmarshal is used to convert the json representation into a timestamp
+func (ts *Timestamp) Unmarshal(input []byte) error {
+	return ts.UnmarshalJSON(input)
+}
+
 // MarshalJSON will return the content as json value, this is also called
 // by graphql to generate the response
 func (ts Timestamp) MarshalJSON() ([]byte, error) {
