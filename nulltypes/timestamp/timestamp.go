@@ -17,6 +17,12 @@ func (ts *Timestamp) SetLayout(l string) {
 	layout = l
 }
 
+func New(v time.Time) *Timestamp {
+	ts := &Timestamp{}
+	ts.Set(v)
+	return ts
+}
+
 // Now get time.Time.Now()
 func Now(v *time.Time) time.Time {
 	if v == nil {
