@@ -40,7 +40,6 @@ func (ts *Timestamp) IsNull() bool {
 
 // Set will set the timestamp to the given time
 func (ts *Timestamp) Set(value time.Time) {
-
 	if ts == nil {
 		*ts = Timestamp{}
 	}
@@ -56,7 +55,6 @@ func (ts *Timestamp) Set(value time.Time) {
 
 // SetNull will clear the timestamp
 func (ts *Timestamp) SetNull() {
-
 	if ts == nil {
 		return
 	}
@@ -67,7 +65,6 @@ func (ts *Timestamp) SetNull() {
 
 // Time returns a golang time object
 func (ts *Timestamp) Time() time.Time {
-
 	if ts.IsNull() {
 		return time.Time{}
 	}
@@ -77,7 +74,6 @@ func (ts *Timestamp) Time() time.Time {
 
 // Scan implements the Scanner interface of the database driver
 func (ts *Timestamp) Scan(value interface{}) error {
-
 	// initialize timestamp if pointer is nil
 	if ts == nil {
 		*ts = Timestamp{}
@@ -99,7 +95,6 @@ func (ts *Timestamp) Scan(value interface{}) error {
 
 // Value implements the db driver Valuer interface
 func (ts Timestamp) Value() (driver.Value, error) {
-
 	if ts.IsNull() {
 		return nil, nil
 	}
@@ -130,7 +125,6 @@ func (ts *Timestamp) UnmarshalGraphQL(input interface{}) error {
 		return nil
 
 	case string:
-
 		timepoint, err := parseFromString(input)
 		if err != nil {
 			return err
@@ -153,20 +147,18 @@ func (ts *Timestamp) UnmarshalGraphQL(input interface{}) error {
 // MarshalJSON will return the content as json value, this is also called
 // by graphql to generate the response
 func (ts Timestamp) MarshalJSON() ([]byte, error) {
-
 	if ts.IsNull() {
 		return []byte("null"), nil
 	}
 
 	// format the timestamp in iso compatible time format
-	formatted := fmt.Sprintf("\"%s\"", ts.Time().Format(time.RFC3339))
+	formatted := fmt.Sprintf("\"%s\"", ts.Time().Format(layout))
 
 	return []byte(formatted), nil
 }
 
 // UnmarshalJSON is used to convert the json representation into a timestamp
 func (ts *Timestamp) UnmarshalJSON(input []byte) error {
-
 	// trim the leading and trailing quotes from the timestamp
 	cleanInput := bytes.Trim(input, "\"")
 
@@ -189,15 +181,8 @@ func (ts *Timestamp) UnmarshalJSON(input []byte) error {
 
 // parseFromString will attemt to parse a timestamp string as time
 func parseFromString(input string) (time.Time, error) {
-
 	// try to parse the information as date
-	timepoint, err := time.Parse(time.RFC3339, input)
-	if err == nil {
-		return timepoint, nil
-	}
-
-	// try to parse the information as date with nano precision from postgres
-	timepoint, err = time.Parse("2006-01-02T15:04:05.999999", input)
+	timepoint, err := time.Parse(layout, input)
 	if err == nil {
 		return timepoint, nil
 	}
